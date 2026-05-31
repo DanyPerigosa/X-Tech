@@ -1,10 +1,10 @@
-# Projeto CicloLocal: Gestão e Conscientização sobre Lixo Eletrônico ♻️📱
+# Projeto XôTech: Gestão e Conscientização sobre Lixo Eletrônico.
 
-O **CicloLocal** é um projeto acadêmico e interdisciplinar focado em solucionar um dos maiores gargalos da sustentabilidade urbana: o descarte incorreto de resíduos eletroeletrônicos (*e-waste*). O objetivo é conectar o cidadão comum ao fluxo obrigatório da logística reversa, unindo tecnologia, conscientização social e segurança de dados.
+O **XôTech** é um projeto acadêmico e interdisciplinar focado em solucionar um dos maiores gargalos da sustentabilidade urbana: o descarte incorreto de resíduos eletroeletrônicos (*e-waste*). O objetivo é conectar o cidadão comum ao fluxo obrigatório da logística reversa, unindo tecnologia, conscientização social e segurança de dados.
 
 ---
 
-## 📋 Contextualização do Problema
+## Contextualização do Problema
 
 A reciclagem de lixo eletrônico funciona como uma "mineração invertida", exigindo um processo complexo que mistura materiais de alto valor econômico com substâncias altamente tóxicas (como chumbo e mercúrio). 
 
@@ -15,7 +15,7 @@ Nossa pesquisa revelou um cenário crítico baseado em dados de grandes entidade
 
 ---
 
-## 🚀 Proposta de Solução
+##  Proposta de Solução
 
 Para quebrar essas barreiras e fazer a engrenagem da logística reversa funcionar na ponta inicial, o projeto propõe:
 1.  **Hub de Coleta Inteligente:** Pontos de Entrega Voluntária (PEVs) físicos integrados a um guia prático de formatação segura de dispositivos.
@@ -24,17 +24,7 @@ Para quebrar essas barreiras e fazer a engrenagem da logística reversa funciona
 
 ---
 
-## 🛠️ Tecnologias e Frameworks Propostos (Mobile App)
-
-O desenvolvimento técnico do ecossistema mobile utiliza as seguintes ferramentas:
-*   **Linguagem:** Kotlin
-*   **UI/Layout:** Jetpack Compose (Arquitetura MVVM)
-*   **Banco de Dados & Auth:** Firebase Firestore
-*   **Ambiente de Desenvolvimento:** Android Studio
-
----
-
-## 📚 Fontes Base da Pesquisa
+##  Fontes Base da Pesquisa
 
 *   **ONU (UNITAR / ITU):** *The Global E-waste Monitor*
 *   **ABREMA:** *Panorama dos Resíduos Sólidos no Brasil*
