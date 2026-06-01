@@ -1,0 +1,294 @@
+/* =========================================
+   1. VARIÁVEIS (A nossa paleta de cores)
+   ========================================= */
+:root {
+    --bg-offwhite: #F5F7F5;      /* Fundo da página, mais suave que o branco */
+    --text-dark: #0A1C15;        /* Texto principal, verde quase preto */
+    --primary-green: #2D6A4F;    /* Verde elegante para detalhes */
+    --action-green: #52B788;     /* Verde vibrante para botões (Vibe energia limpa) */
+    --card-surface: #E8EAE6;     /* Fundo dos cartões */
+    
+    --font-title: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+
+/* =========================================
+   2. RESET BÁSICO (Remove margens padrão do navegador)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-offwhite);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 800;
+    letter-spacing: -0.03em; /* Deixa as letras um pouco mais juntas, estilo editorial */
+}
+
+
+/* =========================================
+   3. NAVEGAÇÃO
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.btn-voltar {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--primary-green);
+}
+
+.btn-voltar:hover {
+    background-color: var(--primary-green);
+    color: var(--action-green);
+}
+
+
+/* =========================================
+   4. LAYOUT PRINCIPAL E CARDS GRID
+   ========================================= */
+
+
+.reciclamos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px 5%;
+
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* =========================================
+   5. SEÇÕES E TÍTULOS
+   ========================================= */
+.catalogo {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 5%;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   6. GRID DE CARDS (Usado em ambas as seções)
+   ========================================= */
+.cards-grid {
+    display: grid;
+    /* Cria colunas responsivas automaticamente. 
+       Se a tela for menor que 300px, empilha. Se for maior, coloca lado a lado */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o grid na tela grande */
+}
+
+/* O Cartão Base */
+.card {
+    background-color: #090720;
+    padding: 30px;
+    border-radius: 16px; /* Bordas arredondadas e modernas */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço interno entre o título e o texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--bg-offwhite);
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    color: #97e043;
+}
+
+/* =========================================
+   7. CARDS CLICÁVEIS (Links para coleta)
+   ========================================= */
+a.card-link {
+    text-decoration: none; /* Tira o sublinhado azul padrão do navegador */
+    color: #97e043; /* Puxa a cor do texto do body */
+    border: 2px solid transparent; /* Prepara uma borda invisível para o hover */
+    background-color: #0A1C15; /* Cor de fundo para o link, pode ser ajustada ou removida */
+
+}
+
+/* Efeito ao passar o mouse por cima do link */
+a.card-link:hover {
+    transform: translateY(-8px); /* Dá um "pulinho" para cima */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Cria uma sombra suave */
+    border: 2px solid var(--action-green); /* Acende uma borda verde */
+}
+
+/* O texto que simula um botão dentro do card */
+.btn-fake {
+    margin-top: auto; /* Empurra esse "botão" sempre para o final do card */
+    color: var(--action-green);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+a.card-link:hover .btn-fake {
+    color: var(--primary-green); /* Escurece o botão quando passa o mouse no card */
+}
+
+/* =========================================
+   8. IMAGENS DOS CARDS (Adaptado para Ícones do Google)
+   ========================================= */
+.card-image {
+    width: 80px;         /* Deixa o ícone menor e mais delicado */
+    height: 80px;        /* Mantém perfeitamente quadrado */
+    object-fit: contain; 
+    margin-bottom: 10px; /* Dá um espacinho entre a logo e o título */
+    border-radius: 12px; /* Deixa as bordinhas do ícone arredondadas */
+}
+
+/* ==========================================================================
+   9. SEÇÃO MOBILE & RESPONSIVIDADE (XôTech Mobile Version)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    /* --- Ajustes Globais e Respiro da Tela --- */
+    body {
+        font-size: 14px; /* Texto ligeiramente menor para telas de celular */
+    }
+
+    /* --- Navbar Mobile --- */
+    .navbar {
+        padding: 15px 4%;
+        flex-direction: column; /* Empilha a logo e o menu no celular */
+        gap: 15px;
+        text-align: center;
+    }
+
+    .logo-group, .hero-title-wrapper {
+        flex-direction: column; /* Alinha o ícone em cima e o texto embaixo */
+        gap: 8px;
+    }
+
+    .navbar-logo, .hero-logo {
+        width: 90px; /* Reduz o tamanho do ícone para não ocupar a tela toda */
+    }
+
+    .logo {
+        font-size: 1.8rem; /* Título XôTech menor para caber na linha */
+        padding: 5px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 1.2rem; /* Links mais juntos para facilitar o toque com o dedo */
+        flex-wrap: wrap;
+    }
+
+    /* --- Seção Hero Mobile --- */
+    .hero {
+        flex-direction: column; /* Texto em cima, imagem/iframe embaixo */
+        padding: 20px 4%;
+        min-height: auto;
+        gap: 30px;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        text-align: center; /* Centraliza o texto no celular */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem; /* Diminui o título gigante para não quebrar feio */
+    }
+
+    .hero p {
+        margin: 0 auto;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 250px; /* Reduz a altura do mapa/vídeo para sobrar espaço */
+    }
+
+    /* --- Grid de Cards (Seção de Descarte e Informações) --- */
+    .cards-grid, .reciclamos, .grid {
+        grid-template-columns: 1fr; /* Força os cartões a ficarem um embaixo do outro */
+        gap: 16px;
+        padding: 0 4%;
+    }
+
+    .card, .info-card {
+        padding: 20px; /* Menos preenchimento interno para o texto ter espaço */
+        min-height: auto; /* Deixa o cartão ajustar o tamanho pelo texto */
+    }
+
+    /* --- Ajustes das Seções de Conteúdo (Color Blocking) --- */
+    .content-section {
+        padding: 40px 6%;
+    }
+
+    .section-split-container {
+        flex-direction: column !important; /* Força o empilhamento mesmo com .reverse */
+        gap: 30px;
+    }
+
+    .section-image {
+        max-width: 90%; /* Imagem expande mais na tela pequena do celular */
+    }
+
+    /* --- Modais do Aparelho (style2.css) --- */
+    .modal-window {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-body {
+        padding: 2rem 1.5rem; /* Margens internas menores no celular */
+    }
+
+    .modal-body h2 {
+        font-size: 1.6rem;
+    }
+
+    .modal-close {
+        top: 0.8rem;
+        right: 1.2rem;
+        font-size: 2rem;
+    }
+}
+

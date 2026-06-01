@@ -1,0 +1,25 @@
+# --- Android Studio & Kotlin ---
+.gradle/
+/build/
+built-in-copy.xml
+captures/
+.idea/
+*.iml
+.DS_Store
+*.log
+
+# --- Segurança e Chaves (Firebase / API) ---
+# NUNCA envie esses arquivos para o GitHub público
+app/google-services.json
+local.properties
+*.jks
+*.keystore
+*.pkcs12
+*.p12
+
+# --- Documentação Local do Grupo ---
+# Ignora PDFs e planilhas locais para o repositório focar apenas no código
+*.pdf
+*.xlsx
+*.csv
+/rascunhos_projeto/

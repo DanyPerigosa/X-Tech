@@ -1,0 +1,381 @@
+/* =========================================
+   1. VARIÁVEIS (A nossa paleta de cores)
+   ========================================= */
+:root {
+    --bg-offwhite: #F5F7F5;      /* Fundo da página, mais suave que o branco */
+    --text-dark: #0A1C15;        /* Texto principal, verde quase preto */
+    --primary-green: #2D6A4F;    /* Verde elegante para detalhes */
+    --action-green: #52B788;     /* Verde vibrante para botões (Vibe energia limpa) */
+    --card-surface: #E8EAE6;     /* Fundo dos cartões */
+    
+    --font-title: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+
+/* =========================================
+   2. RESET BÁSICO (Remove margens padrão do navegador)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-offwhite);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 800;
+    letter-spacing: -0.03em; /* Deixa as letras um pouco mais juntas, estilo editorial */
+}
+
+/* =========================================
+   3. NAVEGAÇÃO
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.btn-voltar {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--primary-green);
+}
+
+.btn-voltar:hover {
+    background-color: var(--primary-green);
+    color: var(--action-green);
+}
+
+
+/* =========================================
+   4. LAYOUT PRINCIPAL E CARDS GRID
+   ========================================= */
+.main-content {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-container {
+    max-width: 600px;
+    margin-bottom: 4rem;
+}
+
+.intro-container h2 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.intro-container p {
+    font-size: 1.1rem;
+    color: var(--primary-green);
+}
+
+/* Grid de 3 colunas que vira 1 no celular automaticamente */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.info-card {
+    background-color: #090720;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    background-color: #e0e2de;
+}
+
+.card-number {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--action-green);
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.5rem 0;
+    line-height: 1.2;
+    color: #97e043
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: #4a5a51;
+    flex-grow: 1; /* Empurra o link para o rodapé do card */
+    margin-bottom: 2rem;
+}
+
+.card-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #97e043;
+}
+
+/* =========================================
+   5. ESTRUTURA ANTI-TOXICIDADE DOS MODAIS
+   ========================================= */
+/* Fundo escuro atrás da janela */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 28, 21, 0.6); /* --text-dark com opacidade */
+    backdrop-filter: blur(5px); /* Efeito desfoque chique no fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Quando o modal ganha a classe ativa */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* A caixa/janela branca flutuante */
+.modal-window {
+    background-color: var(--bg-offwhite);
+    width: 90%;
+    max-width: 800px; /* Largura perfeita ideal para leitura editorial */
+    max-height: 85vh; /* Ocupa no máximo 85% da altura da tela */
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(30px);
+    transition: transform 0.4s ease;
+}
+
+.modal-overlay.active .modal-window {
+    transform: translateY(0);
+}
+
+/* Botão Fechar (X) */
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    line-height: 1;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: var(--action-green);
+}
+
+/* Corpo interno do texto scrollável */
+.modal-body {
+    padding: 3.5rem 3rem;
+    overflow-y: auto; /* Cria a barra de rolagem interna se passar das 40 linhas */
+}
+
+.modal-body h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    padding-right: 2rem; /* Não bate no botão fechar */
+}
+
+/* Configurações editoriais essenciais para o texto longo */
+.modal-text-content {
+    max-width: 70ch; /* Limita caracteres por linha para não cansar os olhos */
+}
+
+.modal-text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8; /* Espaçamento generoso entre linhas para descanso visual */
+    color: var(--text-dark);
+    margin-bottom: 1.5rem; /* Respiro entre parágrafos */
+}
+
+/* =========================================
+  6. NOVO CONTAINER GERAL (TÍTULO + CARDS)
+========================================= */
+.knowledge-wrapper {
+    background-color: #a7d66a; /* Fundo branco para destacar do fundo da página */
+    border-radius: 24px; /* Bordas bem arredondadas, combinando com o estilo moderno */
+    padding: 60px 40px; /* Respiro interno: 60px em cima/baixo, 40px nas laterais */
+    margin: 40px auto; /* Centraliza na página e dá um espaço em cima e embaixo */
+    max-width: 1200px; /* Limita a largura para não esticar muito em telas grandes */
+    
+    /* Uma sombra bem suave e elegante para "descolar" o container do fundo */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.06); 
+    
+    /* Borda super sutil em um tom esverdeado claro para combinar com a paleta */
+    border: 1px solid #e2e8e0; 
+}
+
+/* Ajuste no intro-container para garantir que o texto fique centralizado e com espaço pros cards */
+.knowledge-wrapper .intro-container {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px; /* Limita a largura do texto para facilitar a leitura */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Se quiser garantir que a tela fique responsiva no celular */
+@media (max-width: 768px) {
+    .knowledge-wrapper {
+        padding: 40px 20px; /* Reduz o espaço interno no celular */
+        border-radius: 16px;
+        margin: 20px;
+    }
+}
+
+/* ==========================================================================
+   7. SEÇÃO MOBILE & RESPONSIVIDADE (XôTech Mobile Version)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    /* --- Ajustes Globais e Respiro da Tela --- */
+    body {
+        font-size: 14px; /* Texto ligeiramente menor para telas de celular */
+    }
+
+    /* --- Navbar Mobile --- */
+    .navbar {
+        padding: 15px 4%;
+        flex-direction: column; /* Empilha a logo e o menu no celular */
+        gap: 15px;
+        text-align: center;
+    }
+
+    .logo-group, .hero-title-wrapper {
+        flex-direction: column; /* Alinha o ícone em cima e o texto embaixo */
+        gap: 8px;
+    }
+
+    .navbar-logo, .hero-logo {
+        width: 90px; /* Reduz o tamanho do ícone para não ocupar a tela toda */
+    }
+
+    .logo {
+        font-size: 1.8rem; /* Título XôTech menor para caber na linha */
+        padding: 5px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 1.2rem; /* Links mais juntos para facilitar o toque com o dedo */
+        flex-wrap: wrap;
+    }
+
+    /* --- Seção Hero Mobile --- */
+    .hero {
+        flex-direction: column; /* Texto em cima, imagem/iframe embaixo */
+        padding: 20px 4%;
+        min-height: auto;
+        gap: 30px;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        text-align: center; /* Centraliza o texto no celular */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem; /* Diminui o título gigante para não quebrar feio */
+    }
+
+    .hero p {
+        margin: 0 auto;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 250px; /* Reduz a altura do mapa/vídeo para sobrar espaço */
+    }
+
+    /* --- Grid de Cards (Seção de Descarte e Informações) --- */
+    .cards-grid, .reciclamos, .grid {
+        grid-template-columns: 1fr; /* Força os cartões a ficarem um embaixo do outro */
+        gap: 16px;
+        padding: 0 4%;
+    }
+
+    .card, .info-card {
+        padding: 20px; /* Menos preenchimento interno para o texto ter espaço */
+        min-height: auto; /* Deixa o cartão ajustar o tamanho pelo texto */
+    }
+
+    /* --- Ajustes das Seções de Conteúdo (Color Blocking) --- */
+    .content-section {
+        padding: 40px 6%;
+    }
+
+    .section-split-container {
+        flex-direction: column !important; /* Força o empilhamento mesmo com .reverse */
+        gap: 30px;
+    }
+
+    .section-image {
+        max-width: 90%; /* Imagem expande mais na tela pequena do celular */
+    }
+
+    /* --- Modais do Aparelho (style2.css) --- */
+    .modal-window {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-body {
+        padding: 2rem 1.5rem; /* Margens internas menores no celular */
+    }
+
+    .modal-body h2 {
+        font-size: 1.6rem;
+    }
+
+    .modal-close {
+        top: 0.8rem;
+        right: 1.2rem;
+        font-size: 2rem;
+    }
+}

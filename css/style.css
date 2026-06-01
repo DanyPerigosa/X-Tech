@@ -1,0 +1,474 @@
+/* =========================================
+   1. VARIÁVEIS (Paleta de cores padronizada)
+   ========================================= */
+:root {
+    --bg-offwhite: #F5F7F5;      /* Fundo da página */
+    --text-dark: #0A1C15;        /* Texto principal */
+    --primary-green: #2D6A4F;    /* Verde elegante */
+    --action-green: #52B788;     /* Verde vibrante para botões */
+    --card-surface: #E8EAE6;     /* Fundo dos cartões */
+    
+    /* Cores das seções (Color Blocking) trazidas para as variáveis */
+    --section-dark-green: #2D6A4F;
+    --section-grey-green: #cbcfba;
+    --section-light-green: #a7d66a;
+    --section-dark-blue: #090720;
+    --text-neon-green: #97e043;
+    
+    --font-title: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* =========================================
+   2. RESET BÁSICO
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-offwhite);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+/* =========================================
+   3. CABEÇALHO (Navbar)
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    flex-wrap: wrap; /* Evita que os elementos quebrem de forma feia em telas médias */
+}
+
+/* 1. O CONTAINER (Mantém eles juntos e alinhados pelo meio exato) */
+.logo-group {
+    display: flex;
+    align-items: center; /* Garante o alinhamento vertical perfeito */
+    gap: 15px;           /* Distância entre a logo e o texto */
+}
+
+/* 2. A IMAGEM (Ajustada para um tamanho grande, mas equilibrado) */
+.navbar-logo {
+    width: 150px;        /* Reduzi de 420px para 120px. 420px é maior que a tela de muitos celulares! */
+    height: auto;
+    flex-shrink: 0;      /* Impede que a logo esprema o texto */
+    display: block;      /* Remove aquele espaço invisível embaixo de imagens */
+}
+
+/* 3. O TEXTO "XôTech" (Fixo, blindado e reto) */
+.logo {
+    font-family: var(--font-title);
+    font-size: 2.5rem;   /* Ajustado levemente de 3rem para 2.5rem para equilibrar com a logo */
+    font-weight: 800;     /* Remove qualquer padding que possa estar causando desalinhamento */
+    padding: 25px;
+    line-height: 1;      /* Mantém a caixa de texto exata, sem sobras */
+    margin: 0;           /* REMOVE QUALQUER MARGEM que deixava o texto torto */
+    flex-shrink: 0;      /* Impede que o texto diminua se a logo crescer muito */
+}
+
+/* 4. LINKS DE NAVEGAÇÃO (Garante espaçamento correto) */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;           /* Usar gap no container é melhor do que margin-left individual */
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Impede que o texto do link quebre em duas linhas */
+}
+
+nav a:hover {
+    color: var(--action-green);
+}
+
+/* Estilo para os botões do menu não ficarem colados */
+.btn-outline {
+    border: 2px solid var(--primary-green);
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* =========================================
+   4. BOTÕES E MICRO-INTERAÇÕES
+   ========================================= */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--action-green);
+    color: #fff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green);
+    transform: translateY(-3px);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   5. SEÇÃO HERO
+   ========================================= */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding: 0 5%;
+    margin-bottom: 2rem;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 5%;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--primary-green);
+    max-width: 50ch;
+}
+
+.hero-image {
+    flex: 1;
+    height: 450px;
+    background-color: var(--card-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero-image iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+
+.hero-title-wrapper {
+    display: flex;          /* Força o alinhamento lado a lado */
+    align-items: center;    /* Centraliza a logo e o texto na mesma linha horizontal */
+    gap: 15px;              /* Espaço entre a logo e o título */
+}
+
+.hero-logo {
+    width: 300px;            /* Defina um tamanho fixo para a logo não ficar gigante */
+    height: auto;           /* Mantém a proporção correta */
+}
+
+/* =========================================
+   6. SEÇÕES DE CONTEÚDO (Color Blocking modular)
+   ========================================= */
+.content-section {
+    padding: 6rem 10%; /* Cria o espaço em branco de 10% nas laterais para não colar na borda */
+    display: flex;
+    justify-content: flex-start; /* Empurra todo o bloco de texto para a esquerda */
+}
+
+.text-container {
+    max-width: 75ch; /* Largura ideal para leitura de parágrafos extensos */
+    width: 100%;
+}
+
+.content-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    line-height: 1.7; /* Respiro entre as linhas do texto original */
+    margin-bottom: 1.5rem;
+}
+
+/* Modificadores de cor para as seções */
+.bg-dark-green {
+    background-color: var(--section-dark-green);
+    color: #f7f7f7;
+}
+
+.bg-grey-green {
+    background-color: var(--section-grey-green);
+    color: var(--text-dark);
+}
+
+.bg-lime-green {
+    background-color: var(--section-light-green);
+    color: var(--text-dark);
+}
+
+.bg-dark-blue {
+    background-color: var(--section-dark-blue);
+    color: var(--text-neon-green);
+}
+
+.info-section {
+    padding: 80px 20px; /* Respiro grandão em cima e embaixo */
+}
+
+.section-split-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Centraliza a imagem com o texto verticalmente */
+    justify-content: space-between;
+    gap: 60px; /* Espaço entre texto e imagem */
+}
+
+.text-half {
+    flex: 1; /* Ocupa metade do espaço */
+}
+
+.visual-half {
+    flex: 1; /* Ocupa a outra metade */
+    display: flex;
+    justify-content: center;
+}
+
+.section-image {
+    max-width: 60%;
+    border-radius: 20px; /* Deixa a imagem redondinha combinando com seu design */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra elegante */
+}
+
+/* RESPONSIVO: No celular, o texto fica em cima e a imagem embaixo */
+@media (max-width: 768px) {
+    .section-split-container {
+        flex-direction: column;
+    }
+}
+
+/* DICA PRO: Para inverter o lado na próxima seção (ex: Reciclagem Tecnológica), 
+   basta adicionar a classe "reverse" no container no seu HTML */
+.section-split-container.reverse {
+    flex-direction: row-reverse;
+}
+@media (max-width: 768px) {
+    .section-split-container.reverse {
+        flex-direction: column; /* No celular sempre empilha igual */
+    }
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+.site-footer {
+    background-color: #0A192F; /* Uma cor escura e elegante, puxe da sua paleta se tiver */
+    color: #F4F4EB; /* Texto claro */
+    padding: 60px 20px 20px 20px;
+    font-family: 'Inter', sans-serif; /* Use sua fonte de texto */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* A marca ocupa mais espaço, as listas menos */
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+}
+
+.footer-brand h3 {
+    font-family: 'Syne', sans-serif; /* Sua fonte de título */
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    color: #A0AABF;
+    line-height: 1.6;
+}
+
+.footer-links h4, .footer-team h4 {
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-links ul, .footer-team ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .footer-team li {
+    margin-bottom: 10px;
+    color: #A0AABF;
+}
+
+.footer-links a {
+    color: #A0AABF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #4CAF50; /* Seu verde de destaque ao passar o mouse */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    color: #7A87A1;
+    font-size: 0.9rem;
+}
+
+/* Responsividade do Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Empilha tudo em uma coluna só no celular */
+        text-align: center;
+    }
+}
+
+
+/* ==========================================================================
+   8. SEÇÃO MOBILE & RESPONSIVIDADE (XôTech Mobile Version)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    /* --- Ajustes Globais e Respiro da Tela --- */
+    body {
+        font-size: 14px; /* Texto ligeiramente menor para telas de celular */
+    }
+
+    /* --- Navbar Mobile --- */
+    .navbar {
+        padding: 15px 4%;
+        flex-direction: column; /* Empilha a logo e o menu no celular */
+        gap: 15px;
+        text-align: center;
+    }
+
+    .logo-group, .hero-title-wrapper {
+        flex-direction: column; /* Alinha o ícone em cima e o texto embaixo */
+        gap: 8px;
+    }
+
+    .navbar-logo, .hero-logo {
+        width: 90px; /* Reduz o tamanho do ícone para não ocupar a tela toda */
+    }
+
+    .logo {
+        font-size: 1.8rem; /* Título XôTech menor para caber na linha */
+        padding: 5px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 1.2rem; /* Links mais juntos para facilitar o toque com o dedo */
+        flex-wrap: wrap;
+    }
+
+    /* --- Seção Hero Mobile --- */
+    .hero {
+        flex-direction: column; /* Texto em cima, imagem/iframe embaixo */
+        padding: 20px 4%;
+        min-height: auto;
+        gap: 30px;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        text-align: center; /* Centraliza o texto no celular */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem; /* Diminui o título gigante para não quebrar feio */
+    }
+
+    .hero p {
+        margin: 0 auto;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 250px; /* Reduz a altura do mapa/vídeo para sobrar espaço */
+    }
+
+    /* --- Grid de Cards (Seção de Descarte e Informações) --- */
+    .cards-grid, .reciclamos, .grid {
+        grid-template-columns: 1fr; /* Força os cartões a ficarem um embaixo do outro */
+        gap: 16px;
+        padding: 0 4%;
+    }
+
+    .card, .info-card {
+        padding: 20px; /* Menos preenchimento interno para o texto ter espaço */
+        min-height: auto; /* Deixa o cartão ajustar o tamanho pelo texto */
+    }
+
+    /* --- Ajustes das Seções de Conteúdo (Color Blocking) --- */
+    .content-section {
+        padding: 40px 6%;
+    }
+
+    .section-split-container {
+        flex-direction: column !important; /* Força o empilhamento mesmo com .reverse */
+        gap: 30px;
+    }
+
+    .section-image {
+        max-width: 90%; /* Imagem expande mais na tela pequena do celular */
+    }
+
+    /* --- Modais do Aparelho (style2.css) --- */
+    .modal-window {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-body {
+        padding: 2rem 1.5rem; /* Margens internas menores no celular */
+    }
+
+    .modal-body h2 {
+        font-size: 1.6rem;
+    }
+
+    .modal-close {
+        top: 0.8rem;
+        right: 1.2rem;
+        font-size: 2rem;
+    }
+}
