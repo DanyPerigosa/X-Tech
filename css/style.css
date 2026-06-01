@@ -255,37 +255,42 @@ html {
     padding: 80px 20px; /* Respiro grandão em cima e embaixo */
 }
 
-.section-split-container {
+/* Container que controla o layout interno da seção */
+.content-section {
+    padding: 6rem 10%; 
     display: flex;
-    align-items: center; /* Alinha o texto e a imagem no centro vertical */
-    gap: 50px;           /* Espaço entre texto e imagem */
-    padding: 40px 0;
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 50px;
+    flex-wrap: wrap; /* Isso evita que a imagem quebre o layout em telas menores */
 }
 
-/* Isso força o texto e a imagem a compartilharem o espaço de forma igual */
-.section-split-container > * {
+/* Garante que o texto e a imagem dividam o espaço igualmente */
+.content-section > div {
     flex: 1;
+    min-width: 300px; /* Garante que não fiquem minúsculos em telas pequenas */
 }
 
-.text-half {
-    flex: 1; /* Ocupa metade do espaço */
-}
-
-.visual-half {
-    flex: 1; /* Ocupa a outra metade */
-    display: flex;
-    justify-content: center;
+/* Configuração limpa da imagem */
+.section-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;      /* Mantém a proporção real da imagem */
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .section-image {
-    width: 100%;          
-    max-width: 450px;     
-    height: auto;         /* TROQUEI: Deixa a altura ser automática baseada na largura */
-    object-fit: contain;  /* TROQUEI: 'contain' mostra a imagem INTEIRA sem cortar nada */
+    width: 100%;           /* Ocupa a largura total do seu lado do container */
+    max-width: 500px;      /* Define o limite máximo para não ficar gigante */
+    height: auto !important; /* !important força a manter a proporção original */
+    display: block;
+    object-fit: contain;   /* Garante que a imagem inteira seja vista */
+    margin: 0 auto;        /* Centraliza */
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    display: block;
-    margin: 0 auto;
 }
 /* DICA PRO: Para inverter o lado na próxima seção... */
 .section-split-container.reverse {
