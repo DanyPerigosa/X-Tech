@@ -1,0 +1,104 @@
+/* ==========================================================================
+   RESPONSIVIDADE GLOBAL (Múltiplos Dispositivos e Resoluções)
+   ========================================================================== */
+
+/* --- 1. Laptops e Telas Menores (até 1200px) --- */
+/* Aqui o site começa a apertar. Reduzimos margens para não esmagar o conteúdo. */
+@media (max-width: 1200px) {
+    .content-section, .hero, .navbar {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .section-split-container {
+        gap: 40px; /* Aproxima a imagem do texto */
+    }
+    .knowledge-wrapper {
+        margin: 40px 5%; /* Evita que a caixa bata nas bordas do monitor */
+    }
+}
+
+/* --- 2. Tablets na Horizontal / Laptops Pequenos (até 992px) --- */
+/* Telas médias. Títulos menores e ajustes no grid para não ficar apertado. */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3rem; /* Reduz o título gigante */
+    }
+    .hero-image {
+        height: 350px; /* Achata um pouco o mapa/imagem inicial */
+    }
+    /* Força os cartões a ficarem em 2 colunas no tablet */
+    .cards-grid, .reciclamos, .grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    /* O menu superior precisa de mais espaço */
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* --- 3. Tablets na Vertical e Celulares Grandes (até 768px) --- */
+/* Ponto crítico: a tela não comporta mais coisas lado a lado. Empilhamos tudo. */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    /* Força todas as seções divididas a ficarem uma embaixo da outra */
+    .section-split-container, 
+    .section-split-container.reverse {
+        flex-direction: column; 
+        text-align: center;
+    }
+    .section-image {
+        max-width: 80%; /* A imagem volta a crescer para preencher a tela */
+        margin: 0 auto;
+    }
+    .footer-container {
+        grid-template-columns: 1fr; /* Rodapé em coluna única */
+        text-align: center;
+        gap: 30px;
+    }
+}
+
+/* --- 4. Celulares Padrão (até 480px) --- */
+/* Otimização extrema de espaço para a palma da mão. */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px; /* Fonte levemente menor para caber mais texto */
+    }
+    /* Os cartões agora ocupam 100% da largura da tela (1 coluna) */
+    .cards-grid, .reciclamos, .grid {
+        grid-template-columns: 1fr; 
+    }
+    .logo {
+        font-size: 2rem;
+        padding: 5px;
+    }
+    /* Ajustes dos Pop-ups (Modais) para o celular */
+    .modal-window {
+        width: 95%;
+        max-height: 90vh;
+    }
+    .modal-body {
+        padding: 2rem 1.5rem;
+    }
+    .modal-body h2 {
+        font-size: 1.6rem;
+    }
+    .modal-close {
+        top: 0.8rem;
+        right: 1.2rem;
+    }
+    /* O menu de navegação vira uma lista vertical */
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}
