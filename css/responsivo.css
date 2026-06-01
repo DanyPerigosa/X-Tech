@@ -104,14 +104,14 @@
 }
 
 @media (min-width: 1201px) {
-    .section-image {
-        max-width: 600px; /* Aumenta o tamanho máximo em monitores */
-        height: auto;      /* Mantém a proporção real */
-        object-fit: contain;
-    }
-    
-    /* Garante que o container não force corte */
     .content-section {
-        gap: 80px; /* Mais espaço entre texto e imagem em monitores */
+        display: flex !important;      /* Força o layout lado a lado */
+        flex-direction: row !important; /* Garante que não empilhe em coluna */
+        gap: 80px; 
+    }
+    .section-image {
+        max-width: 600px;
+        height: auto;
+        object-fit: contain;
     }
 }
