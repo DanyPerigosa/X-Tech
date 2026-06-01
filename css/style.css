@@ -267,27 +267,16 @@ html {
 
 .section-image {
     max-width: 60%;
-    border-radius: 20px; /* Deixa a imagem redondinha combinando com seu design */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra elegante */
-}
-
-/* RESPONSIVO: No celular, o texto fica em cima e a imagem embaixo */
-@media (max-width: 768px) {
-    .section-split-container {
-        flex-direction: column;
-    }
+    height: 100%;         /* Se a altura for forçada, o comando abaixo salva a pátria */
+    object-fit: cover;    /* A MÁGICA: Corta as bordinhas da imagem se precisar, mas NUNCA amassa ou estica ela */
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 /* DICA PRO: Para inverter o lado na próxima seção (ex: Reciclagem Tecnológica), 
    basta adicionar a classe "reverse" no container no seu HTML */
 .section-split-container.reverse {
     flex-direction: row-reverse;
-}
-@media (max-width: 768px) {
-    .section-split-container.reverse {
-        flex-direction: column; /* No celular sempre empilha igual */
-    }
-}
 
 /* =========================================
    7. FOOTER
