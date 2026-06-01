@@ -278,10 +278,10 @@ html {
 }
 
 .section-image {
-    width: 100%;          /* Garante que ela ocupe o espaço disponível */
-    max-width: 450px;     /* Define um tamanho limite para não ficar gigante */
-    height: 300px;        /* Fixa uma altura para que ela tenha presença */
-    object-fit: cover;    /* A MÁGICA: Preenche o espaço 300x450 sem deformar a imagem */
+    width: 100%;          
+    max-width: 450px;     
+    height: auto;         /* TROQUEI: Deixa a altura ser automática baseada na largura */
+    object-fit: contain;  /* TROQUEI: 'contain' mostra a imagem INTEIRA sem cortar nada */
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     display: block;
