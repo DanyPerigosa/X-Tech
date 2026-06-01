@@ -29,6 +29,13 @@
     box-sizing: border-box;
 }
 
+/* Proteção Global contra imagens distorcidas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 body {
     background-color: var(--bg-offwhite);
     color: var(--text-dark);
@@ -199,9 +206,11 @@ html {
    6. SEÇÕES DE CONTEÚDO (Color Blocking modular)
    ========================================= */
 .content-section {
-    padding: 6rem 10%; /* Cria o espaço em branco de 10% nas laterais para não colar na borda */
+    padding: 6rem 10%; 
     display: flex;
-    justify-content: flex-start; /* Empurra todo o bloco de texto para a esquerda */
+    justify-content: space-between; 
+    align-items: center; /* A MÁGICA 2: Centraliza a imagem e o texto na vertical */
+    gap: 50px; /* A MÁGICA 3: Cria um espaço vazio para eles não grudarem */
 }
 
 .text-container {
@@ -266,17 +275,18 @@ html {
 }
 
 .section-image {
-    max-width: 60%;
-    height: 100%;         /* Se a altura for forçada, o comando abaixo salva a pátria */
-    object-fit: cover;    /* A MÁGICA: Corta as bordinhas da imagem se precisar, mas NUNCA amassa ou estica ela */
+    max-width: 90%; /* Aumentamos para ela ocupar bem o espaço direito */
+    height: auto;   /* A MÁGICA 1: Tira o 100% que deixava ela gigante e cortada */
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    /* object-fit: cover; -> Agora podemos tirar isso, pois a altura é automática! */
 }
 
 /* DICA PRO: Para inverter o lado na próxima seção (ex: Reciclagem Tecnológica), 
    basta adicionar a classe "reverse" no container no seu HTML */
 .section-split-container.reverse {
     flex-direction: row-reverse;
+}
 
 /* =========================================
    7. FOOTER
@@ -340,13 +350,4 @@ html {
     padding-top: 20px;
     color: #7A87A1;
     font-size: 0.9rem;
-}
-
-/* Responsividade do Footer */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr; /* Empilha tudo em uma coluna só no celular */
-        text-align: center;
-    }
- }
 }

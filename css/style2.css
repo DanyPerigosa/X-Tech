@@ -258,12 +258,3 @@ h1, h2, h3 {
     margin-left: auto;
     margin-right: auto;
 }
-
-/* Se quiser garantir que a tela fique responsiva no celular */
-@media (max-width: 768px) {
-    .knowledge-wrapper {
-        padding: 40px 20px; /* Reduz o espaço interno no celular */
-        border-radius: 16px;
-        margin: 20px;
-    }
-}
