@@ -208,7 +208,7 @@ h1, h2, h3 {
     color: var(--action-green);
 }
 
-/* Corpo interno do texto scrollável */
+/* Corpo interno do texto scrolável */
 .modal-body {
     padding: 3.5rem 3rem;
     overflow-y: auto; /* Cria a barra de rolagem interna se passar das 40 linhas */
