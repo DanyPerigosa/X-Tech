@@ -102,3 +102,35 @@
         gap: 15px;
     }
 }
+
+/* --- 5. Telas Grandes (HD, Full HD e acima de 1200px) --- */
+@media (min-width: 1201px) {
+    /* Centraliza e limita o conteúdo para não ficar esticado demais */
+    .hero, .content-section, .navbar {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Aumenta um pouco o título para telas grandes terem mais impacto */
+    .hero h1 {
+        font-size: 5rem;
+    }
+
+    /* Ajusta o espaçamento das seções para dar mais respiro */
+    .content-section {
+        padding: 8rem 5%;
+        gap: 100px;
+    }
+}
+
+/* --- 6. Telas Ultra-Wide ou Full HD (acima de 1920px) --- */
+@media (min-width: 1920px) {
+    body {
+        font-size: 1.2rem; /* Aumenta um pouco a base da fonte para legibilidade */
+    }
+    
+    .hero h1 {
+        font-size: 6rem;
+    }
+}
