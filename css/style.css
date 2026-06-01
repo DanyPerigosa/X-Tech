@@ -348,4 +348,5 @@ html {
         grid-template-columns: 1fr; /* Empilha tudo em uma coluna só no celular */
         text-align: center;
     }
+ }
 }
