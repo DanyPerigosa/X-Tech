@@ -256,12 +256,15 @@ html {
 }
 
 .section-split-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
-    align-items: center; /* Centraliza a imagem com o texto verticalmente */
-    justify-content: space-between;
-    gap: 60px; /* Espaço entre texto e imagem */
+    align-items: center; /* Alinha o texto e a imagem no centro vertical */
+    gap: 50px;           /* Espaço entre texto e imagem */
+    padding: 40px 0;
+}
+
+/* Isso força o texto e a imagem a compartilharem o espaço de forma igual */
+.section-split-container > * {
+    flex: 1;
 }
 
 .text-half {
@@ -275,18 +278,19 @@ html {
 }
 
 .section-image {
-    max-width: 90%; /* Aumentamos para ela ocupar bem o espaço direito */
-    height: auto;   /* A MÁGICA 1: Tira o 100% que deixava ela gigante e cortada */
+    width: 100%;          /* Garante que ela ocupe o espaço disponível */
+    max-width: 450px;     /* Define um tamanho limite para não ficar gigante */
+    height: 300px;        /* Fixa uma altura para que ela tenha presença */
+    object-fit: cover;    /* A MÁGICA: Preenche o espaço 300x450 sem deformar a imagem */
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    /* object-fit: cover; -> Agora podemos tirar isso, pois a altura é automática! */
+    display: block;
+    margin: 0 auto;
 }
-
-/* DICA PRO: Para inverter o lado na próxima seção (ex: Reciclagem Tecnológica), 
-   basta adicionar a classe "reverse" no container no seu HTML */
+/* DICA PRO: Para inverter o lado na próxima seção... */
 .section-split-container.reverse {
     flex-direction: row-reverse;
-}
+} /* <--- ESSA CHAVE ESTAVA FALTANDO E QUEBRAVA O FOOTER! */
 
 /* =========================================
    7. FOOTER
@@ -301,8 +305,8 @@ html {
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr; /* A marca ocupa mais espaço, as listas menos */
+    display: grid !important; /* O !important garante que o grid nunca seja desativado */
+    grid-template-columns: 2fr 1fr 1fr; 
     gap: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 40px;
